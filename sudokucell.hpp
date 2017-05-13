@@ -5,12 +5,13 @@
 
 class SudokuCell : public NumSet{
 private:
-    bool isFocused;
+    bool _changable, isFocused, isIncorrect;
 public:
-    SudokuCell(int x, int y, int num, int _min, int _max);
+    SudokuCell(int x, int y, int num, int _min, int _max, bool changable);
     virtual void draw() const;
     virtual void handle(genv::event ev);
     virtual void lost_focus(genv::event ev);
+    virtual void setCorrectness(bool isCorrect);
 
     static unsigned short sizeXSudokuCell();
     static unsigned short sizeYSudokuCell();

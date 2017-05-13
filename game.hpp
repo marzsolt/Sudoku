@@ -11,7 +11,8 @@ protected:
     //virtual void gameLogic();
 public:
     Game(unsigned short sizeX, unsigned short sizeY, GameMaster gm);
-    void eventLoop();
+    virtual void gameLogic() = 0;
+    virtual void eventLoop();
 };
 
 #endif // GAME_HPP_INCLUDED

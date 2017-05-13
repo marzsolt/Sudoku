@@ -17,8 +17,6 @@ public:
     virtual int getNum() const;
 
     static genv::canvas &gombokCv();
-
-    void dataToFile(std::ofstream &o) const;
 };
 
 #endif // NUMSET_HPP_INCLUDED

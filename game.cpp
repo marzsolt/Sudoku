@@ -27,6 +27,7 @@ void Game::eventLoop() {
         }
         for (Widget * v : w)
             v->draw();
+        gameLogic();
         gout << refresh;
     }
 }

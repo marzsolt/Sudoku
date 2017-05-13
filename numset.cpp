@@ -62,11 +62,6 @@ canvas &NumSet::gombokCv() {
     return G;
 }
 
-void NumSet::dataToFile(std::ofstream &o) const {
-    o << "\n\nNumSet object: x = " << _x << "\ny = " << _y << "\nsize in x = " << _size_x << "\nsize in y = " << _size_y
-    << "\nnumber = " << num << "\nminimum = " << m << "\nmaximum = " << M;
-}
-
 int NumSet::getNum() const {
     return num;
 }
