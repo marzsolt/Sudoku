@@ -17,12 +17,12 @@
 	<vector>
 	"graphics.hpp"
 
-1492733096 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\statictxt.cpp
+1494715612 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\statictxt.cpp
 	<fstream>
 	"graphics.hpp"
 	"statictxt.hpp"
 
-1492732490 c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\statictxt.hpp
+1494715569 c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\statictxt.hpp
 	"graphics.hpp"
 	"widgets.hpp"
 
@@ -40,12 +40,12 @@
 	"graphics.hpp"
 	"widgets.hpp"
 
-1494700343 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\game.cpp
+1494712183 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\game.cpp
 	"graphics.hpp"
 	"game.hpp"
 	"gamemaster.hpp"
 
-1494700402 c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\game.hpp
+1494711835 c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\game.hpp
 	"graphics.hpp"
 	"window.hpp"
 	"gamemaster.hpp"
@@ -54,14 +54,16 @@
 	<vector>
 	"sudokucell.hpp"
 
-1494704695 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\gamemaster.cpp
+1494714085 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\gamemaster.cpp
 	<fstream>
 	<vector>
 	"gamemaster.hpp"
 	"sudokucell.hpp"
 
-1494705060 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\main.cpp
+1494715498 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\main.cpp
 	<vector>
+	<sstream>
+	<fstream>
 	"sudokucell.hpp"
 	"statictxt.hpp"
 	"game.hpp"

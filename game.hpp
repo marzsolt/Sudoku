@@ -8,11 +8,12 @@
 class Game : public Window{
 protected:
     GameMaster _gm;
-    //virtual void gameLogic();
+    int _time;
 public:
     Game(unsigned short sizeX, unsigned short sizeY, GameMaster gm);
     virtual void gameLogic() = 0;
     virtual void eventLoop();
+    virtual void printGameTime();
 };
 
 #endif // GAME_HPP_INCLUDED

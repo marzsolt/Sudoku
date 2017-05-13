@@ -13,6 +13,7 @@ std::vector<unsigned short> GameMaster::loadFieldsFromFile(std::string filename)
     std::vector<unsigned short> nums(81);
     for(unsigned short i = 0; i < 81; i++)
         in >> nums[i];
+    in.close();
     return nums;
 }
 

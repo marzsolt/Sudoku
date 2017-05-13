@@ -4,12 +4,12 @@
 
 using namespace genv;
 
-Game::Game(unsigned short sizeX, unsigned short sizeY, GameMaster gm) : Window(sizeX, sizeY), _gm(gm) {}
+Game::Game(unsigned short sizeX, unsigned short sizeY, GameMaster gm) : Window(sizeX, sizeY), _gm(gm), _time(0) {}
 
 void Game::eventLoop() {
     gout.open(_sizeX, _sizeY);
     gout << move_to(0, 0) << color(255, 255, 255) << box(_sizeX, _sizeY) << refresh;
-
+    gin.timer(1000);
     event ev;
     int focus = -1;
     while (gin >> ev && ev.keycode != key_escape) {
@@ -22,6 +22,8 @@ void Game::eventLoop() {
                 }
             }
         }
+        else if (ev.type == ev_timer)
+            printGameTime();
         if (focus != -1) {
             w[focus]->handle(ev);
         }
@@ -32,4 +34,6 @@ void Game::eventLoop() {
     }
 }
 
-
+void Game::printGameTime() {
+    _time++;
+}
