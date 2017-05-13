@@ -1,0 +1,75 @@
+# depslib dependency file v1.0
+1494698397 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\numset.cpp
+	<string>
+	<algorithm>
+	<fstream>
+	"graphics.hpp"
+	"numset.hpp"
+
+1488882326 c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\include\graphics.hpp
+	<string>
+
+1494698199 c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\numset.hpp
+	"graphics.hpp"
+	"widgets.hpp"
+
+1494687283 c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\widgets.hpp
+	<vector>
+	"graphics.hpp"
+
+1492733096 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\statictxt.cpp
+	<fstream>
+	"graphics.hpp"
+	"statictxt.hpp"
+
+1492732490 c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\statictxt.hpp
+	"graphics.hpp"
+	"widgets.hpp"
+
+1492733075 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\widgets.cpp
+	<sstream>
+	"graphics.hpp"
+	"widgets.hpp"
+
+1494698410 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\window.cpp
+	"graphics.hpp"
+	"window.hpp"
+
+1494698346 c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\window.hpp
+	<vector>
+	"graphics.hpp"
+	"widgets.hpp"
+
+1494698956 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\game.cpp
+	"graphics.hpp"
+	"game.hpp"
+	"gamemaster.hpp"
+
+1494678160 c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\game.hpp
+	"graphics.hpp"
+	"window.hpp"
+	"gamemaster.hpp"
+
+1494686774 c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\gamemaster.hpp
+	<vector>
+
+1494689915 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\gamemaster.cpp
+	<fstream>
+	"gamemaster.hpp"
+
+1494698875 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\main.cpp
+	<vector>
+	"sudokucell.hpp"
+	"game.hpp"
+	"gamemaster.hpp"
+
+1494698809 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\sudokucell.cpp
+	<string>
+	<algorithm>
+	<fstream>
+	"graphics.hpp"
+	"sudokucell.hpp"
+
+1494698785 c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\sudokucell.hpp
+	"numset.hpp"
+
