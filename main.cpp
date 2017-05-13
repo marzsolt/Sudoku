@@ -1,6 +1,8 @@
 #include <vector> // std::vector
 #include <sstream> // std::stringstream
 #include <fstream> //std::ifstream
+#include <cstdlib> //std::srand
+#include <ctime> //std::time
 
 #include "sudokucell.hpp" // SudokuCell
 #include "statictxt.hpp" // StaticTxt
@@ -22,19 +24,13 @@ std::string time2str(int time) {
 
 class Sudoku : public Game{
 private:
-    std::vector<SudokuCell*> cells;
+    std::string _filename;
+    std::vector<SudokuCell*> cells = std::vector<SudokuCell*>(81);
     StaticTxt * t, * tHITxt, * congratStr, * newHI;
     bool _isDone;
     int tHI;
 public:
-    Sudoku(unsigned short sizeX, unsigned short sizeY, GameMaster gm, std::string filename) : Game(sizeX, sizeY, gm), _isDone(false) {
-        std::vector<unsigned short> nums = gm.loadFieldsFromFile(filename);
-        for(int i = 0; i < 81; i++) {
-            SudokuCell* tmp = new SudokuCell(10 + (i % 9) * (SudokuCell::sizeXSudokuCell() - 1)  + ((i % 9) / 3) * 6,
-                                      10 + (i / 9) * (SudokuCell::sizeYSudokuCell() - 1) + ((i / 9) / 3) * 6, nums[i], 0, 9, nums[i]);
-            cells.push_back(tmp);
-            w.push_back(tmp);
-        }
+    Sudoku(unsigned short sizeX, unsigned short sizeY, GameMaster gm, std::string filename) : Game(sizeX, sizeY, gm), _filename(filename), _isDone(false) {
         t = new StaticTxt(10, 280, 230, gout.cascent(), time2str(_time));
         w.push_back(t);
         std::ifstream in ("hi.ppke");
@@ -49,13 +45,14 @@ public:
         w.push_back(congratStr);
         newHI = new StaticTxt(160, 280, 80, gout.cascent() + gout.cdescent(), "");
         w.push_back(newHI);
+        newGame();
     }
     void gameLogic() {
         for (int i = 0; i < 81; i++)
             if (cells[i]->getNum() != 0)
                 cells[i]->setCorrectness(_gm.isCorrect(i, cells));
         if ((_isDone = _gm.isFinished(cells))) {
-            congratStr->setTxt("Congratulation, you did it!\nPress ESC for exit.", 255);
+            congratStr->setTxt("Congratulation, you did it!\nESC: exit, ENTER: new game.", 255);
             if (_time < tHI || tHI == 0) {
                 newHI->setTxt("NEW BEST", 255);
                 std::ofstream out ("hi.ppke");
@@ -68,6 +65,24 @@ public:
         else {
             congratStr->setTxt("");
             newHI->setTxt("");
+        }
+    }
+    void newGame() {
+        _time = -1;
+        if (w.size() >= 81)
+            for (int i = 0; i < 81; i++)
+                w.pop_back();
+        std::vector<unsigned short> nums = _gm.loadFieldsFromFile(_filename);
+        for(int i = 0; i < 81; i++) {
+            SudokuCell* tmp = new SudokuCell(10 + (i % 9) * (SudokuCell::sizeXSudokuCell() - 1)  + ((i % 9) / 3) * 6,
+                                      10 + (i / 9) * (SudokuCell::sizeYSudokuCell() - 1) + ((i / 9) / 3) * 6, nums[i], 0, 9, nums[i]);
+            cells[i] = tmp;
+            w.push_back(tmp);
+
+        }
+        for (int i = 0; i < 578; i++) {
+            int randType = rand() % 4;
+            _gm.transformSudoku(cells, randType);
         }
     }
     void printGameTime() {
@@ -83,6 +98,7 @@ public:
 
 int main()
 {
+    srand(time(NULL));
     GameMaster GM;
     Sudoku *sudoku = new Sudoku(XX, YY, GM, "01.txt");
     sudoku->eventLoop();

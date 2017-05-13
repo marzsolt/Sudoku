@@ -24,6 +24,8 @@ void Game::eventLoop() {
         }
         else if (ev.type == ev_timer)
             printGameTime();
+        else if (ev.type == ev_key && ev.keycode == key_enter)
+            newGame();
         if (focus != -1) {
             w[focus]->handle(ev);
         }

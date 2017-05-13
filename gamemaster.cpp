@@ -43,3 +43,41 @@ bool GameMaster::isFinished(std::vector<SudokuCell*> &cells) const {
             finished = false;
     return finished;
 }
+
+void GameMaster::transformSudoku(std::vector<SudokuCell*> &cells, int type) const {
+    // Ötlet forrás: http://dryicons.com/blog/2009/08/14/a-simple-algorithm-for-generating-sudoku-puzzles/
+    SudokuCell * tmp;
+    switch (type) {
+        case 0:
+            for (int i = 0; i < 81; i++)
+            if (i % 9 < 4) {
+                tmp = cells[i];
+                cells[i] = cells[((i / 9) * 9 + 8) - (i - (i / 9) * 9)];
+                cells[((i / 9) * 9 + 8) - (i - (i / 9) * 9)] = tmp;
+            }
+            break;
+        case 1:
+            for (int i = 0; i < 81; i++)
+            if (i / 9 + i % 9 < 8) {
+                tmp = cells[i];
+                cells[i] = cells[(8 - i % 9) * 9 + 8 - i / 9];
+                cells[(8 - i % 9) * 9 + 8 - i / 9] = tmp;
+            }
+            break;
+        case 2:
+            for (int i = 0; i < 81; i++)
+            if (i / 9 > i % 9) {
+                tmp = cells[i];
+                cells[i] = cells[i / 9 + (i % 9) * 9];
+                cells[i / 9 + (i % 9) * 9] = tmp;
+            }
+            break;
+        case 3:
+            for (int i = 0; i < 81; i++)
+            if (i / 9 < 4) {
+                tmp = cells[i];
+                cells[i] = cells[i % 9 + (8 - i / 9) * 9];
+                cells[i % 9 + (8 - i / 9) * 9] = tmp;
+            }
+    }
+}
