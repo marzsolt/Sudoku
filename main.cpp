@@ -1,8 +1,7 @@
 #include <vector> // std::vector
 
-//#include "widgets.hpp"
 #include "sudokucell.hpp" // SudokuCell
-//#include "statictxt.hpp"
+#include "statictxt.hpp" // StaticTxt
 
 #include "game.hpp" // Game
 #include "gamemaster.hpp" // GameMaster
@@ -29,6 +28,11 @@ public:
         for (int i = 0; i < 81; i++)
             if (cells[i]->getNum() != 0)
                 cells[i]->setCorrectness(_gm.isCorrect(i, cells));
+        if (_gm.isFinished(cells)) {
+            std::string str1 = "Congratulation, you did it!\nPress ESC for exit.";
+            StaticTxt * s1 = new StaticTxt(10, 240, 290, 10, str1);
+            w.push_back(s1);
+        }
     }
 };
 

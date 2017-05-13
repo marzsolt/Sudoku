@@ -9,7 +9,8 @@ class GameMaster{
 public:
     GameMaster();
     std::vector<unsigned short>loadFieldsFromFile(std::string filename);
-    bool isCorrect(int i, std::vector<SudokuCell*> cells) const;
+    bool isCorrect(int i, std::vector<SudokuCell*> &cells) const;
+    bool isFinished(std::vector<SudokuCell*> &cells) const;
 };
 
 #endif // GAMEMASTER_HPP_INCLUDED

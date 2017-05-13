@@ -16,7 +16,7 @@ std::vector<unsigned short> GameMaster::loadFieldsFromFile(std::string filename)
     return nums;
 }
 
-bool GameMaster::isCorrect(int i, std::vector<SudokuCell*> cells) const {
+bool GameMaster::isCorrect(int i, std::vector<SudokuCell*> &cells) const {
     bool correct = true;
     int iVal = cells[i]->getNum();
     int row = i / 9; // Hányadik sorban van i.
@@ -33,4 +33,12 @@ bool GameMaster::isCorrect(int i, std::vector<SudokuCell*> cells) const {
         if (j != i && cells[j]->getNum() == iVal)
             correct = false;
     return correct;
+}
+
+bool GameMaster::isFinished(std::vector<SudokuCell*> &cells) const {
+    bool finished = true;
+    for (int i = 0; i < 81 && finished; i++)
+        if (cells[i]->getNum() == 0 || !isCorrect(i, cells))
+            finished = false;
+    return finished;
 }
