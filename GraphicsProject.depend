@@ -50,11 +50,11 @@
 	"window.hpp"
 	"gamemaster.hpp"
 
-1494770564 c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\gamemaster.hpp
+1494782957 c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\gamemaster.hpp
 	<vector>
 	"sudokucell.hpp"
 
-1494772069 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\gamemaster.cpp
+1494782515 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\gamemaster.cpp
 	<fstream>
 	<vector>
 	<cstdlib>
