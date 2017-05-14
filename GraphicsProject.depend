@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1494748334 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\numset.cpp
+1494789028 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\numset.cpp
 	<string>
 	<algorithm>
 	<fstream>
+	<cmath>
 	"graphics.hpp"
 	"numset.hpp"
 
@@ -54,14 +55,15 @@
 	<vector>
 	"sudokucell.hpp"
 
-1494786568 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\gamemaster.cpp
+1494788129 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\gamemaster.cpp
 	<fstream>
 	<vector>
 	<cstdlib>
+	<iostream>
 	"gamemaster.hpp"
 	"sudokucell.hpp"
 
-1494786688 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\main.cpp
+1494789380 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\main.cpp
 	<vector>
 	<sstream>
 	<fstream>
@@ -72,11 +74,12 @@
 	"game.hpp"
 	"gamemaster.hpp"
 
-1494786560 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\sudokucell.cpp
+1494789073 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\sudokucell.cpp
 	<string>
 	<algorithm>
 	<fstream>
 	<cstdlib>
+	<cmath>
 	"graphics.hpp"
 	"sudokucell.hpp"
 

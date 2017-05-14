@@ -2,6 +2,7 @@
 #include <algorithm> // std::max
 #include <fstream> // std::ofstream
 #include <cstdlib> // std::rand()
+#include <cmath> // std::abs()
 
 #include "graphics.hpp"
 #include "sudokucell.hpp"
@@ -40,6 +41,8 @@ void SudokuCell::handle(event ev) {
             num += ev.keycode == key_up ? 1 : 10;
         else if (ev.keycode == key_down || ev.keycode == key_pgdn)
             num -= ev.keycode == key_down ? 1 : 10;
+        else if (abs(ev.keycode) >= 48 && abs(ev.keycode) <= 57)
+            num = abs(ev.keycode) - 48;
     }
     if (num < m)
         num = m;

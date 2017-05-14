@@ -1,6 +1,7 @@
 #include <string> // std::string
 #include <algorithm> // std::max
 #include <fstream> // std::ofstream
+#include <cmath> // std::abs()
 
 #include "graphics.hpp"
 #include "numset.hpp"
@@ -47,6 +48,8 @@ void NumSet::handle(event ev) {
             num += ev.keycode == key_up ? 1 : 10;
         else if (ev.keycode == key_down || ev.keycode == key_pgdn)
             num -= ev.keycode == key_down ? 1 : 10;
+        else if (abs(ev.keycode) >= 48 && abs(ev.keycode) <= 57)
+            num = abs(ev.keycode);
     }
     if (num < m)
         num = m;

@@ -47,9 +47,12 @@ public:
         newGame();
     }
     void gameLogic() {
-        for (int i = 0; i < 81; i++)
+        for (int i = 0; i < 81; i++) {
             if (cells[i]->getNum() != 0)
                 cells[i]->setCorrectness(_gm.isCorrect(i, cells));
+            else
+                cells[i]->setCorrectness(true);
+        }
         if ((_isDone = _gm.isFinished(cells))) {
             congratStr->setTxt("Congratulation, you did it!\nESC: exit, ENTER: new game.", 255);
             if (_time < tHI || tHI == 0) {
