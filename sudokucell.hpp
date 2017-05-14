@@ -14,9 +14,7 @@ public:
     virtual void lost_focus(genv::event ev);
     virtual void setCorrectness(bool isCorrect);
 
-    //virtual void deleteContent();
-    //virtual void getRandomValue();
-    virtual void setCell(unsigned short newNum);
+    virtual void setCell(unsigned short newNum, bool changable);
 
     static unsigned short sizeXSudokuCell();
     static unsigned short sizeYSudokuCell();

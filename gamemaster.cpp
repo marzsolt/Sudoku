@@ -2,6 +2,8 @@
 #include <vector> // std::vector
 #include <cstdlib> // std::rand()
 
+#include <iostream>
+
 #include "gamemaster.hpp"
 #include "sudokucell.hpp"
 
@@ -18,6 +20,33 @@ std::vector<unsigned short> GameMaster::loadFieldsFromFile(std::string filename)
     return nums;
 }
 
+bool GameMaster::isCorrect(int i, std::vector<SudokuCell*> &cells) const {
+    bool correct = true;
+    int iVal = cells[i]->getNum();
+    int row = i / 9; // Hányadik sorban van i.
+    int col = i % 9; // Hányadik oslzopban van i.
+    for (int j = 0; j < 9 && correct; j++) {
+        if (row * 9 + j != i && cells[row * 9 + j]->getNum() == iVal) // Sorok ellenőrzése.
+            correct = false;
+        else if (j * 9 + col != i && cells[j * 9 + col]->getNum() == iVal) // Oszlopok ellenőrzése.
+            correct = false;
+    }
+    // Az egyes négyzetek ellenőrzése:
+    int squareFirst = (row / 3) * 27 + (col / 3) * 3;
+    for (int j = squareFirst; j < squareFirst + 21 && correct; j % 3 == 2 ? j += 7 : j += 1)
+        if (j != i && cells[j]->getNum() == iVal)
+            correct = false;
+    return correct;
+}
+
+bool GameMaster::isFinished(std::vector<SudokuCell*> &cells) const {
+    bool finished = true;
+    for (int i = 0; i < 81 && finished; i++)
+        if (cells[i]->getNum() == 0 || !isCorrect(i, cells))
+            finished = false;
+    return finished;
+}
+
 bool GameMaster::isCorrectF(int i, std::vector<unsigned short> &field, bool emptyIs) const {
     if (!emptyIs && field[i] == 0)
         return false;
@@ -31,9 +60,9 @@ bool GameMaster::isCorrectF(int i, std::vector<unsigned short> &field, bool empt
         else if (j * 9 + col != i && field[j * 9 + col] == iVal) // Oszlopok ellenőrzése.
             correct = false;
     }
-    // Az egyes háromszögek ellenőrzése:
-    int triangleFirst = (row / 3) * 27 + (col / 3) * 3;
-    for (int j = triangleFirst; j < triangleFirst + 21 && correct; j % 3 == 2 ? j += 7 : j += 1)
+    // Az egyes négyzetek ellenőrzése:
+    int squareFirst = (row / 3) * 27 + (col / 3) * 3;
+    for (int j = squareFirst; j < squareFirst + 21 && correct; j % 3 == 2 ? j += 7 : j += 1)
         if (j != i && field[j] == iVal)
             correct = false;
     return correct;
@@ -70,11 +99,11 @@ void GameMaster::backtrackGenerate(std::vector<unsigned short> &field, std::vect
     }
 }
 
-void GameMaster::randomCells(std::vector<SudokuCell*> &cells, std::vector<unsigned short> &fields) const {
-    std::vector<unsigned short> fields2(81, 0);
+void GameMaster::randomCells(std::vector<SudokuCell*> &cells) const {
+    std::vector<unsigned short> field(81, 0);
     std::vector<std::vector<bool>> theseWere(81, std::vector<bool>(9, false));
     // Töltsük fell random a táblát.
-    backtrackGenerate(fields2, theseWere, 0);
+    backtrackGenerate(field, theseWere, 0);
     // Távolítsunk el elemeket, amíg egyértelmű a megoldás.
     std::vector<bool> thisWas(81, false);
     for (int i = 0; i < 50; i++) {
@@ -83,9 +112,8 @@ void GameMaster::randomCells(std::vector<SudokuCell*> &cells, std::vector<unsign
             r = rand() % 81;
         } while (thisWas[r]);
         thisWas[r] = true;
-        fields2[r] = 0;
+        field[r] = 0;
     }
-    fields = fields2;
     for (int i = 0; i < 81; i++)
-        cells[i]->setCell(fields[i]);
+        cells[i]->setCell(field[i], false);
 }

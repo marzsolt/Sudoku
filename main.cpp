@@ -25,7 +25,6 @@ std::string time2str(int time) {
 class Sudoku : public Game{
 private:
     std::vector<SudokuCell*> cells = std::vector<SudokuCell*>(81);
-    std::vector<unsigned short> fields = std::vector<unsigned short>(81, 0);
     StaticTxt * t, * tHITxt, * congratStr, * newHI;
     bool _isDone;
     int tHI;
@@ -49,9 +48,9 @@ public:
     }
     void gameLogic() {
         for (int i = 0; i < 81; i++)
-            if (fields[i] != 0)
-                cells[i]->setCorrectness(_gm.isCorrectF(i, fields));
-        if ((_isDone = _gm.isFinishedF(fields))) {
+            if (cells[i]->getNum() != 0)
+                cells[i]->setCorrectness(_gm.isCorrect(i, cells));
+        if ((_isDone = _gm.isFinished(cells))) {
             congratStr->setTxt("Congratulation, you did it!\nESC: exit, ENTER: new game.", 255);
             if (_time < tHI || tHI == 0) {
                 newHI->setTxt("NEW BEST", 255);
@@ -74,11 +73,11 @@ public:
                 w.pop_back();
         for(int i = 0; i < 81; i++) {
             SudokuCell* tmp = new SudokuCell(10 + (i % 9) * (SudokuCell::sizeXSudokuCell() - 1)  + ((i % 9) / 3) * 6,
-                                      10 + (i / 9) * (SudokuCell::sizeYSudokuCell() - 1) + ((i / 9) / 3) * 6, fields[i], 0, 9, fields[i]);
+                                      10 + (i / 9) * (SudokuCell::sizeYSudokuCell() - 1) + ((i / 9) / 3) * 6, 0, 0, 9, 0);
             cells[i] = tmp;
             w.push_back(tmp);
         }
-        _gm.randomCells(cells, fields);
+        _gm.randomCells(cells);
     }
     void printGameTime() {
         if (!_isDone) {

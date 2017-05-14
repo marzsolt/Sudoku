@@ -55,34 +55,14 @@ void SudokuCell::setCorrectness(bool isCorrect) {
     isIncorrect = !isCorrect;
 }
 
-/*void SudokuCell::deleteContent() {
-    num = 0;
-    _changable = false;
-    isFocused = false;
-    isIncorrect = false;
-}
-
-void SudokuCell::getRandomValue() {
-    num = rand() % 9 + 1;
-}*/
-
-/*void SudokuCell::makeItB(SudokuCell *B) {
-    _x = B->_x;
-    _y = B->_y;
-    _size_x = B->_size_x;
-    _size_y = B->_size_y;
-    _changable = B->_changable;
-    isFocused = B->isFocused;
-    isIncorrect = B->isIncorrect;
-    num = B->num;
-}*/
-
-void SudokuCell::setCell(unsigned short newNum) {
-    isIncorrect = false;
-    isFocused = false;
+void SudokuCell::setCell(unsigned short newNum, bool changable) {
+    if (!changable) {
+        isIncorrect = false;
+        isFocused = false;
+        _changable = newNum;
+        _changable = !_changable;
+    }
     num = newNum;
-    _changable = num;
-    _changable = !_changable;
 }
 
 unsigned short SudokuCell::sizeYSudokuCell() {
