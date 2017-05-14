@@ -31,7 +31,7 @@
 	"graphics.hpp"
 	"widgets.hpp"
 
-1494698410 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\window.cpp
+1494784073 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\window.cpp
 	"graphics.hpp"
 	"window.hpp"
 
@@ -50,11 +50,11 @@
 	"window.hpp"
 	"gamemaster.hpp"
 
-1494782957 c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\gamemaster.hpp
+1494784454 c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\gamemaster.hpp
 	<vector>
 	"sudokucell.hpp"
 
-1494782515 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\gamemaster.cpp
+1494784496 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\gamemaster.cpp
 	<fstream>
 	<vector>
 	<cstdlib>
@@ -62,7 +62,7 @@
 	"gamemaster.hpp"
 	"sudokucell.hpp"
 
-1494764348 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\main.cpp
+1494784358 source:c:\users\zsolt\desktop\ppke itk mi\[2.] bevezetés a programozásba ii\[beadandó][2.] 2017.05.13\sudoku\main.cpp
 	<vector>
 	<sstream>
 	<fstream>

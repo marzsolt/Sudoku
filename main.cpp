@@ -24,13 +24,13 @@ std::string time2str(int time) {
 
 class Sudoku : public Game{
 private:
-    std::string _filename;
     std::vector<SudokuCell*> cells = std::vector<SudokuCell*>(81);
+    std::vector<unsigned short> fields = std::vector<unsigned short>(81, 0);
     StaticTxt * t, * tHITxt, * congratStr, * newHI;
     bool _isDone;
     int tHI;
 public:
-    Sudoku(unsigned short sizeX, unsigned short sizeY, GameMaster gm, std::string filename) : Game(sizeX, sizeY, gm), _filename(filename), _isDone(false) {
+    Sudoku(unsigned short sizeX, unsigned short sizeY, GameMaster gm) : Game(sizeX, sizeY, gm), _isDone(false) {
         t = new StaticTxt(10, 280, 230, gout.cascent(), time2str(_time));
         w.push_back(t);
         std::ifstream in ("hi.ppke");
@@ -49,9 +49,9 @@ public:
     }
     void gameLogic() {
         for (int i = 0; i < 81; i++)
-            if (cells[i]->getNum() != 0)
-                cells[i]->setCorrectness(_gm.isCorrect(i, cells));
-        if ((_isDone = _gm.isFinished(cells))) {
+            if (fields[i] != 0)
+                cells[i]->setCorrectness(_gm.isCorrectF(i, fields));
+        if ((_isDone = _gm.isFinishedF(fields))) {
             congratStr->setTxt("Congratulation, you did it!\nESC: exit, ENTER: new game.", 255);
             if (_time < tHI || tHI == 0) {
                 newHI->setTxt("NEW BEST", 255);
@@ -72,19 +72,13 @@ public:
         if (w.size() >= 81)
             for (int i = 0; i < 81; i++)
                 w.pop_back();
-        std::vector<unsigned short> nums = _gm.loadFieldsFromFile(_filename);
         for(int i = 0; i < 81; i++) {
             SudokuCell* tmp = new SudokuCell(10 + (i % 9) * (SudokuCell::sizeXSudokuCell() - 1)  + ((i % 9) / 3) * 6,
-                                      10 + (i / 9) * (SudokuCell::sizeYSudokuCell() - 1) + ((i / 9) / 3) * 6, nums[i], 0, 9, nums[i]);
+                                      10 + (i / 9) * (SudokuCell::sizeYSudokuCell() - 1) + ((i / 9) / 3) * 6, fields[i], 0, 9, fields[i]);
             cells[i] = tmp;
             w.push_back(tmp);
-
         }
-        /*for (int i = 0; i < 400; i++) {
-            int randType = rand() % 4;
-            _gm.transformSudoku(cells, randType);
-        }*/
-        _gm.randomCells(cells);
+        _gm.randomCells(cells, fields);
     }
     void printGameTime() {
         if (!_isDone) {
@@ -101,7 +95,7 @@ int main()
 {
     srand(time(NULL));
     GameMaster GM;
-    Sudoku *sudoku = new Sudoku(XX, YY, GM, "01.txt");
+    Sudoku *sudoku = new Sudoku(XX, YY, GM);
     sudoku->eventLoop();
     return 0;
 }
