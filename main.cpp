@@ -80,10 +80,11 @@ public:
             w.push_back(tmp);
 
         }
-        for (int i = 0; i < 578; i++) {
+        /*for (int i = 0; i < 400; i++) {
             int randType = rand() % 4;
             _gm.transformSudoku(cells, randType);
-        }
+        }*/
+        _gm.randomCells(cells);
     }
     void printGameTime() {
         if (!_isDone) {

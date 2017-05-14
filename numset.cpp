@@ -10,6 +10,8 @@ using namespace genv;
 const unsigned short h = 1 + 5 + gout.cascent() + 5 + 1; // Keret: 2 x (1 px), térköz: 2 x (5 px), szám magasság.
 
 // Keret: 2 x (1 px), térköz: 2 x (5 px) , szám hossz.
+NumSet::NumSet() {}
+
 NumSet::NumSet(int x, int y, int _min, int _max) :
     Widget(x, y, (1 + 5 + gout.twidth(int2str(pow(10, szjsz(std::max(abs(_max), abs(_min)) + 1)) - 1)) + 5 + 1), h), num(_min), m(_min), M(_max) {}
 

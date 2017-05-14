@@ -8,6 +8,7 @@ class NumSet : public Widget {
 protected:
     int num, m, M;
 public:
+    NumSet();
     NumSet(int x, int y, int _min, int _max);
     NumSet(int x, int y, int sx, int sy, int num, int _min, int _max);
     virtual void draw() const;

@@ -1,6 +1,7 @@
 #include <string> // std::string
 #include <algorithm> // std::max
 #include <fstream> // std::ofstream
+#include <cstdlib> // std::rand()
 
 #include "graphics.hpp"
 #include "sudokucell.hpp"
@@ -10,6 +11,8 @@ using namespace genv;
 const unsigned short h = 1 + 5 + gout.cascent() + 5 + 1; // Keret: 2 x (1 px), térköz: 2 x (5 px), szám magasság.
 
 // Keret: 2 x (1 px), térköz: 2 x (5 px) , szám hossz.
+SudokuCell::SudokuCell() {}
+
 SudokuCell::SudokuCell(int x, int y, int num, int _min, int _max, bool changable) :
     NumSet(x, y, (1 + 7 + gout.twidth(int2str(9)) + 7 + 1), h, num, _min, _max), _changable(!changable), isFocused(false), isIncorrect(false) {}
 
@@ -18,7 +21,7 @@ void SudokuCell::draw() const {
     << move_to(_x + 1, _y + 1) << color(isFocused ? 0 : 255, isFocused ? 0 : (isIncorrect ? 0 : 255), isFocused ? 255 : (isIncorrect ? 0 : 255)) << box(_size_x - 2, _size_y - 2) // Fókusz keret
     << move_to(_x + 2, _y + 2) << color(255, 255, 255) << box(_size_x - 4, _size_y - 4); // Belsõ fehérség
     if (num != 0)
-        gout << move_to(_x + 8, _y + h - 7) << color((isIncorrect ? 255 : 0), 0, isIncorrect ? 0 : (_changable ? 255 : 0)) << text(int2str(num)); // Szám berajzolása
+        gout << move_to(_x + 8, _y + h - 7) << color(_changable ? 0 : (isIncorrect ? 255 : 0), 0, _changable ? 255 : 0) << text(int2str(num)); // Szám berajzolása
 }
 
 
@@ -50,6 +53,36 @@ void SudokuCell::lost_focus(genv::event ev) {
 
 void SudokuCell::setCorrectness(bool isCorrect) {
     isIncorrect = !isCorrect;
+}
+
+/*void SudokuCell::deleteContent() {
+    num = 0;
+    _changable = false;
+    isFocused = false;
+    isIncorrect = false;
+}
+
+void SudokuCell::getRandomValue() {
+    num = rand() % 9 + 1;
+}*/
+
+/*void SudokuCell::makeItB(SudokuCell *B) {
+    _x = B->_x;
+    _y = B->_y;
+    _size_x = B->_size_x;
+    _size_y = B->_size_y;
+    _changable = B->_changable;
+    isFocused = B->isFocused;
+    isIncorrect = B->isIncorrect;
+    num = B->num;
+}*/
+
+void SudokuCell::setCell(unsigned short newNum) {
+    isIncorrect = false;
+    isFocused = false;
+    num = newNum;
+    _changable = num;
+    _changable = !_changable;
 }
 
 unsigned short SudokuCell::sizeYSudokuCell() {
